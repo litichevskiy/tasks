@@ -67,12 +67,21 @@ console.log( s2.getFullName() );
 //        }
 //    };
 
+function Address (index, city, street, building, flat) {
+    this.index    = index;
+    this.city     = city;
+    this.street   = street;
+    this.building = building;
+    this.flat     = flat;
+}
+
+
+var b = new Address ('34568', 'kiev', 'pipkin', '67', '98');
 
 var a = new Address('70429', 'Minsk', 'Lukashenko', '21', '334');
 
-function Address (index, city, street, building, flat) {
-}
 
+console.log(a,b);
 
 //a = {
 //    index    : '70429',
