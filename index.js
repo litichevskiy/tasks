@@ -20,93 +20,57 @@ function createStudent ( firstName, lastName, secondName, course ) {
 
 var s1 = createStudent( 'Vasiliy', 'Pupkin', 'Leonidovich', 'history' );
 
+// ---------------------------------------------------------------------
+// ---------------------------------------------------------------------
 
-function Student ( firstName, lastName, secondName, course ) {
+function Student ( firstName, lastName, secondName, course, index, city, street, building, flat, planet ) {
 
-    this.name = new Name( firstName, lastName, secondName );
-    this.course = course;
-    
-    this.getFullName = function () {
-           return this.name.last + ' ' + this.name.first + ' ' + this.name.second;
-        }
+    this.name    = new Name(firstName, lastName, secondName);
+    this.course  = course;
+    this.address = new Address(index, city, street, building, flat, planet);
 }
 
-var s2 = new Student( 'Innokentiy', 'Pupkin', 'Leonidovich', 'history' );
-
-//function getFullAddrss ( s ) {
-//    return s.address.index + ' ' + s.address.city + ' ' + s.address.street + ' ' + s.address.building + ' ' + s.address.flat;
-//}
-
-
-console.log('------------------------------------');
-console.log( s1.getFullName() );
-console.log( s2.getFullName() );
-
-//var s = {
-//        name : {
-//                first  : 'Vasiliy',
-//                second : 'Leonidovich',
-//                last   : 'Pupkin'
-//            },
-//        address : {
-//            index : '70429',
-//            city  : 'Minsk',
-//            street : 'Lukashenko',
-//            building : '21',
-//            flat : '334'
-//        },
-//        course : 'history',
-//
-//        getFullName : function () {
-//           return s.name.last + ' ' + s.name.first + ' ' + s.name.second;
-//        }
-//    };
-
-function Address (index, city, street, building, flat) {
+function Address (index, city, street, building, flat, planet) {
     this.index    = index;
     this.city     = city;
     this.street   = street;
     this.building = building;
     this.flat     = flat;
+
+    if ( planet ) this.planet = planet;
 }
 
-
-var b = new Address ('34568', 'kiev', 'pipkin', '67', '98');
-
-var a = new Address('70429', 'Minsk', 'Lukashenko', '21', '334');
-
-
-console.log(a,b);
-
-//a = {
-//    index    : '70429',
-//    city     : 'Minsk',
-//    street   : 'Lukashenko',
-//    building : '21',
-//    flat     : '334'
-//};
-
-
+Address.prototype.planet = 'Earth';
+Address.prototype.getFullAddrss = function () {
+    return this.planet + ' ' + this.index + ' ' + this.city + ' ' + this.street + ' ' + this.building + ' ' + this.flat;
+}
 
 
 function Name ( firstName, lastName, secondName ) {
     this.first  = firstName;
     this.second = secondName;
     this.last   = lastName;
+
+    this.getFullName = function () {
+           return this.last + ' ' + this.first + ' ' + this.second;
+        }
+}
+
+var s2 = new Student( 'Innokentiy2', 'Pupkin', 'Leonidovich', 'history', '72013', 'Minsk', 'Lukashenko', 24, 37, 'Mars' );
+var s3 = new Student( 'Innokentiy3', 'Pupkin', 'Leonidovich', 'history', '72013', 'Minsk', 'Lukashenko', 24, 37 );
+var s4 = new Student( 'Innokentiy4', 'Pupkin', 'Leonidovich', 'history', '72013', 'Minsk', 'Lukashenko', 24, 37 );
+
+var a3 = new Address('72013', 'Minsk', 'Lukashenko', 24, 37);
+
+for ( var i in a3 ) {
+    if ( a3.hasOwnProperty(i) ) {
+        console.log( i, a3[i] );
+    } else {
+        console.log( 'PROTOTYPE: ', i, a3[i] );
+    }
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+//console.log('------------------------------------');
+//console.log( s2.name.getFullName() );
 
