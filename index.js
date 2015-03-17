@@ -23,12 +23,7 @@ var s1 = createStudent( 'Vasiliy', 'Pupkin', 'Leonidovich', 'history' );
 
 function Student ( firstName, lastName, secondName, course ) {
 
-    this.name = {
-            first  : firstName,
-            second : secondName,
-            last   : lastName
-        };
-
+    this.name = new Name( firstName, lastName, secondName );
     this.course = course;
     
     this.getFullName = function () {
@@ -90,4 +85,28 @@ console.log(a,b);
 //    building : '21',
 //    flat     : '334'
 //};
+
+
+
+
+function Name ( firstName, lastName, secondName ) {
+    this.first  = firstName;
+    this.second = secondName;
+    this.last   = lastName;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
