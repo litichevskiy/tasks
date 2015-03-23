@@ -1,28 +1,3 @@
-function createStudent ( firstName, lastName, secondName, course ) {
-
-    var o = {};
-
-    o.name = {
-            first  : firstName,
-            second : secondName,
-            last   : lastName
-        };
-
-    o.course = course;
-    
-    o.getFullName = function () {
-           return o.name.last + ' ' + o.name.first + ' ' + o.name.second;
-        }
-
-    return o;
-}
-
-
-var s1 = createStudent( 'Vasiliy', 'Pupkin', 'Leonidovich', 'history' );
-
-// ---------------------------------------------------------------------
-// ---------------------------------------------------------------------
-
 function Student ( firstName, lastName, secondName, course, index, city, street, building, flat, planet ) {
 
     this.name    = new Name(firstName, lastName, secondName);
@@ -56,21 +31,41 @@ function Name ( firstName, lastName, secondName ) {
         }
 }
 
-var s2 = new Student( 'Innokentiy2', 'Pupkin', 'Leonidovich', 'history', '72013', 'Minsk', 'Lukashenko', 24, 37, 'Mars' );
-var s3 = new Student( 'Innokentiy3', 'Pupkin', 'Leonidovich', 'history', '72013', 'Minsk', 'Lukashenko', 24, 37 );
-var s4 = new Student( 'Innokentiy4', 'Pupkin', 'Leonidovich', 'history', '72013', 'Minsk', 'Lukashenko', 24, 37 );
 
-var a3 = new Address('72013', 'Minsk', 'Lukashenko', 24, 37);
+var storage = [];
 
-for ( var i in a3 ) {
-    if ( a3.hasOwnProperty(i) ) {
-        console.log( i, a3[i] );
-    } else {
-        console.log( 'PROTOTYPE: ', i, a3[i] );
-    }
-}
+var button = document.getElementById('show'),
+    list   = document.getElementById('listCont'),
+    form   = document.getElementById('form'),
+    first  = document.getElementById('firstName'),
+    last   = document.getElementById('lastName'),
+    second = document.getElementById('secondName');
+
+form.addEventListener('submit', function(event){
+    event.preventDefault();
+
+    storage.push(new Student(first.value, last.value, second.value, 'history', '72013', 'Minsk', 'Lukashenko', 24, 37));
+
+//    storage.push(new Student({
+//        name : {
+//            last   : 'Innokentiy4',
+//            first  : 'Pupkin',
+//            second : 'Leonidovich'
+//        },
+//        course : 'history',
+//        address : {
+//            flat     : 37,
+//            index  : '72013',
+//            street : 'Lukashenko',
+//            city   : 'Minsk',
+//            building : 24
+//        }
+//    }));
+
+    return false;
+});
 
 
-//console.log('------------------------------------');
-//console.log( s2.name.getFullName() );
-
+button.addEventListener('click', function(event){
+    list.innerHTML = JSON.stringify(storage, null, 4);
+});
