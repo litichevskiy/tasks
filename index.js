@@ -1,8 +1,9 @@
-function Student ( firstName, lastName, secondName, course, index, city, street, building, flat, planet ) {
+function Student ( o ) {
 
-    this.name    = new Name(firstName, lastName, secondName);
-    this.course  = course;
-    this.address = new Address(index, city, street, building, flat, planet);
+    this.name    = new Name(o.name.first, o.name.last, o.name.second);
+    //this.name    = new Name(o.name);
+    this.course  = o.course;
+    this.address = new Address(o.address.index, o.address.city, o.address.street, o.address.building, o.address.flat, o.address.planet);
 }
 
 function Address (index, city, street, building, flat, planet) {
@@ -44,23 +45,23 @@ var button = document.getElementById('show'),
 form.addEventListener('submit', function(event){
     event.preventDefault();
 
-    storage.push(new Student(first.value, last.value, second.value, 'history', '72013', 'Minsk', 'Lukashenko', 24, 37));
+    storage.push(new Student({
+        name : {
+            last   : last.value,
+            first  : first.value,
+            second : second.value
+        },
+        course : 'history',
+        address : {
+            flat     : 37,
+            index  : '72013',
+            street : 'Lukashenko',
+            city   : 'Minsk',
+            building : 24
+        }
+    }));
 
-//    storage.push(new Student({
-//        name : {
-//            last   : 'Innokentiy4',
-//            first  : 'Pupkin',
-//            second : 'Leonidovich'
-//        },
-//        course : 'history',
-//        address : {
-//            flat     : 37,
-//            index  : '72013',
-//            street : 'Lukashenko',
-//            city   : 'Minsk',
-//            building : 24
-//        }
-//    }));
+
 
     return false;
 });
