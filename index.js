@@ -1,7 +1,7 @@
 function Student ( o ) {
 
-    this.name    = new Name(o.name.first, o.name.last, o.name.second);
-    //this.name    = new Name(o.name);
+    //this.name    = new Name(o.name.first, o.name.last, o.name.second);
+    this.name    = new Name(o.name);
     this.course  = o.course;
     this.address = new Address(o.address.index, o.address.city, o.address.street, o.address.building, o.address.flat, o.address.planet);
 }
@@ -22,10 +22,10 @@ Address.prototype.getFullAddrss = function () {
 }
 
 
-function Name ( firstName, lastName, secondName ) {
-    this.first  = firstName;
-    this.second = secondName;
-    this.last   = lastName;
+function Name ( o ) {
+    this.first  = o.first;
+    this.second = o.second;
+    this.last   = o.last;
 
     this.getFullName = function () {
            return this.last + ' ' + this.first + ' ' + this.second;
