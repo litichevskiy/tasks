@@ -40,7 +40,12 @@ var button = document.getElementById('show'),
     form   = document.getElementById('form'),
     first  = document.getElementById('firstName'),
     last   = document.getElementById('lastName'),
-    second = document.getElementById('secondName');
+    second   = document.getElementById('secondName'),
+    addrCity   = document.getElementById('addrCity'),
+    addrStreet   = document.getElementById('addrStreet'),
+    addrBuilding = document.getElementById('addrBuilding'),
+    addrFlat     = document.getElementById('addrFlat'),
+    course       = document.getElementById('course');
 
 form.addEventListener('submit', function(event){
     event.preventDefault();
@@ -51,13 +56,12 @@ form.addEventListener('submit', function(event){
             first  : first.value,
             second : second.value
         },
-        course : 'history',
+        course : course.value,
         address : {
-            flat     : 37,
-            index  : '72013',
-            street : 'Lukashenko',
-            city   : 'Minsk',
-            building : 24
+            flat     : addrFlat.value,
+            street   : addrStreet.value,
+            city     : addrCity.value,
+            building : addrBuilding.value
         }
     }));
 

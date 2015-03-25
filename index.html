@@ -1,13 +1,56 @@
 <html>
+<head>
+    <style>
+        .formset {
+            padding : 0.5em;
+            }
+        .formset > li {
+            display : table-row;
+            }
+        .formset > li > * {
+            display : table-cell;
+            margin  : 0.2em;
+            }
+    </style>
+</head>
 <body>
 
 
 <form id="form">
-    <ul>
-        <li><span>first</span><input type="text" id="firstName"/></li>
-        <li><span>second</span><input type="text" id="secondName"/></li>
-        <li><span>last</span><input type="text" id="lastName"/></li>
-    </ul>
+    <fieldset>
+        <legend>name</legend>
+        <ul class="formset">
+            <li><span>first</span><input type="text" id="firstName"/></li>
+            <li><span>second</span><input type="text" id="secondName"/></li>
+            <li><span>last</span><input type="text" id="lastName"/></li>
+        </ul>
+    </fieldset>
+    
+    <fieldset>
+        <legend>address</legend>
+        <ul class="formset">
+            <li><span>city</span><input type="text" id="addrCity"/></li>
+            <li><span>street</span><input type="text" id="addrStreet"/></li>
+            <li><span>building</span><input type="text" id="addrBuilding"/></li>
+            <li><span>flat</span><input type="text" id="addrFlat"/></li>
+        </ul>
+    </fieldset>
+    
+    <fieldset>
+        <legend>course</legend>
+        <ul class="formset">
+            <li>
+                <span>course</span>
+                <select required="required" name="course" id="course">
+                    <option disabled="disabled"></option>
+                    <option value="history">history</option>
+                    <option value="mathematics">mathematics</option>
+                    <option value="philology">philology</option>
+                </select>
+            </li>
+        </ul>
+    </fieldset>
+    
 
     <input type="submit">
 </form>
