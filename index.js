@@ -32,8 +32,7 @@ function Name ( o ) {
         }
 }
 
-
-var storage = [];
+var studentsStorage = new Storage();
 
 var button = document.getElementById('show'),
     list   = document.getElementById('listCont'),
@@ -50,7 +49,7 @@ var button = document.getElementById('show'),
 form.addEventListener('submit', function(event){
     event.preventDefault();
 
-    storage.push(new Student({
+    studentsStorage.put(new Student({
         name : {
             last   : last.value,
             first  : first.value,
@@ -74,3 +73,17 @@ form.addEventListener('submit', function(event){
 button.addEventListener('click', function(event){
     list.innerHTML = JSON.stringify(storage, null, 4);
 });
+
+//var storage = new Storage();
+//
+//var s1 = {a : 'AA', b : 'BB'};
+//
+//var id = storage.put(s1);
+//
+//var s = storage.get(id);
+//
+//s.c = 'CC';
+//storage.update(id, s);
+////storage.remove(id);
+//
+//console.log(storage.get(id));
