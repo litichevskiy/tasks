@@ -1,33 +1,26 @@
-//var bin = {};
-//var lastID = 0;
-//
-//var storage = {
-//
-//    put : function ( o ) {
-//
-//        lastID++;
-//        bin[lastID] = o;
-//
-//        return lastID;
-//    },
-//
-//    get : function ( id ) {
-//        return bin[id];
-//    },
-//
-//    remove : function ( id ) {
-//        delete bin[id];
-//    },
-//
-//    update : function ( id, o ) {
-//        bin[id] = o;
-//    }
-//};
-
 function Storage () {
     this.bin    = {};
     this.lastID = 0;
-}
+};
+
+
+
+Storage.prototype.update = function ( id, o ) {
+    this.bin[id] = o;
+    return  this.bin[id];
+};
+
+
+Storage.prototype.remove = function ( id ) {
+     delete this.bin[id];
+};
+
+
+Storage.prototype.get = function ( id ) {
+    
+    return this.bin[id];
+};
+
 
 Storage.prototype.put = function ( o ) {
 
@@ -36,3 +29,4 @@ Storage.prototype.put = function ( o ) {
 
     return this.lastID;
 };
+
