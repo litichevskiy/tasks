@@ -32,7 +32,7 @@ function Name ( o ) {
         }
 }
 
-var studentsStorage = new Storage();
+var studentsStorage = new memoryStorage();
 
 var button = document.getElementById('show'),
     list   = document.getElementById('listCont'),
@@ -74,7 +74,7 @@ button.addEventListener('click', function(event){
     list.innerHTML = JSON.stringify(storage, null, 4);
 });
 
-//var storage = new Storage();
+//var storage = new memoryStorage();
 //
 //var s1 = {a : 'AA', b : 'BB'};
 //
